@@ -55,9 +55,3 @@ tasks.withType(Test) {
         }
     }
 }
-
-task UILoginTest(type: Test){
-    useJUnitPlatform {
-        includeTags 'UILoginTest'
-    }
-}

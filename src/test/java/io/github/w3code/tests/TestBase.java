@@ -5,6 +5,7 @@ import io.github.w3code.config.ShopConfig;
 import io.github.w3code.helpers.Attach;
 import io.github.w3code.pages.MyAccountPage;
 import io.github.w3code.pages.SignInPage;
+import io.restassured.RestAssured;
 import org.aeonbits.owner.ConfigFactory;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
@@ -17,6 +18,8 @@ public class TestBase {
 
     @BeforeAll
     static void startMaximized() {
+        RestAssured.baseURI = shop.shopUrl();
+        Configuration.baseUrl = shop.shopUrl();
         Configuration.browserSize = "1920x1080";
 
         DesiredCapabilities capabilities = new DesiredCapabilities();

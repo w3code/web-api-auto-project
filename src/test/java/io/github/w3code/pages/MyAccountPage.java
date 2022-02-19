@@ -5,6 +5,8 @@ import io.qameta.allure.Step;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.open;
+import static io.github.w3code.tests.TestBase.shop;
 
 public class MyAccountPage {
 
@@ -15,6 +17,11 @@ public class MyAccountPage {
             pageTitle = $(".page-heading");
 
     //actions
+    public MyAccountPage openPage() {
+        open("/index.php?controller=my-account");
+        return this;
+    }
+
     @Step("Verify My account page")
     public MyAccountPage verifyMyAccountPage() {
         pageTitle.shouldHave(text(PAGE_TITLE));

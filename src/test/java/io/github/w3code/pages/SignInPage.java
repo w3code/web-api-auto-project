@@ -22,7 +22,7 @@ public class SignInPage {
     //actions
     @Step("Open the Sign in page")
     public SignInPage openPage() {
-        open(shop.shopUrl() + "?controller=authentication");
+        open("/index.php?controller=authentication");
         return this;
     }
 
