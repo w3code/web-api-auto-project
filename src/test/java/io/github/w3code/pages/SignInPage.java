@@ -43,7 +43,7 @@ public class SignInPage {
         return this;
     }
 
-    @Step("Type password in Password field")
+    @Step("Click Sign In button")
     public SignInPage clickSignIn() {
         signInButton.click();
         return this;

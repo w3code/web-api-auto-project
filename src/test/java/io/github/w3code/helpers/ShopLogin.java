@@ -7,7 +7,7 @@ import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 import static io.github.w3code.api.AuthorizationAPI.getAuthorizationCookie;
 
 public class ShopLogin {
-    public static void loginShopViaAPI(String user, String password) {
+    public static void loginShopViaApi(String user, String password) {
         String authorizationCookie = getAuthorizationCookie(user, password);
 
         open("/img/logo.jpg");
