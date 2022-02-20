@@ -6,6 +6,7 @@ import io.github.w3code.helpers.Attach;
 import io.github.w3code.pages.IdentityPage;
 import io.github.w3code.pages.MyAccountPage;
 import io.github.w3code.pages.SignInPage;
+import io.github.w3code.pages.WomanPage;
 import io.restassured.RestAssured;
 import org.aeonbits.owner.ConfigFactory;
 import org.junit.jupiter.api.AfterEach;
@@ -17,6 +18,7 @@ public class TestBase {
     SignInPage signInPage = new SignInPage();
     MyAccountPage myAccountPage = new MyAccountPage();
     IdentityPage identityPage = new IdentityPage();
+    WomanPage womanPage = new WomanPage();
 
     @BeforeAll
     static void startMaximized() {
