@@ -2,6 +2,7 @@ package io.github.w3code.api;
 
 import io.qameta.allure.Step;
 
+import static io.github.w3code.filters.CustomLogFilter.customLogFilter;
 import static io.restassured.RestAssured.given;
 
 public class AuthorizationAPI {
@@ -9,6 +10,7 @@ public class AuthorizationAPI {
     public static String getAuthorizationCookie(String user, String password) {
 
         return given()
+                .filter(customLogFilter().withCustomTemplates())
                 .contentType("application/x-www-form-urlencoded")
                 .queryParam("controller", "authentication")
                 .body("email=" + user + "&passwd=" + password + "&back=my-account&SubmitLogin=")

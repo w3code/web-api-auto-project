@@ -1,6 +1,5 @@
 package io.github.w3code.tests;
 
-import io.restassured.response.Response;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
@@ -10,14 +9,12 @@ import org.openqa.selenium.Cookie;
 import static com.codeborne.selenide.Selenide.open;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 import static io.github.w3code.api.AuthorizationAPI.getAuthorizationCookie;
-import static io.restassured.RestAssured.given;
 
 public class PrestaShopTests extends TestBase {
 
     @Test
     @DisplayName("UI login test")
     @Tag("UILoginTest")
-    @Disabled
     void uiLoginTest() {
         signInPage
                 .openPage()

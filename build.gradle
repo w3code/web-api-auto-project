@@ -30,6 +30,7 @@ dependencies {
     testImplementation(
             "com.codeborne:selenide:5.25.0",
             "io.qameta.allure:allure-selenide:$allureVersion",
+            "io.qameta.allure:allure-rest-assured:$allureVersion",
             "io.appium:java-client:7.6.0",
             "io.rest-assured:rest-assured:4.5.0",
             "org.aeonbits.owner:owner:1.0.12",
