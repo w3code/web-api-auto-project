@@ -68,11 +68,14 @@ public class PrestaShopTests extends TestBase {
     @DisplayName("Add to cart test")
     @Tag("AddToCartTest")
     void addToCartTest() {
+        int cartNum = getRandomNumber(0, 6);
+
         womanPage
                 .openPage()
                 .verifyWomanPage()
-                .moveToFirstCart()
-                .clickAddToCart()
+                .moveToCart(cartNum)
+                .setItemTitle(cartNum)
+                .clickAddToCart(cartNum)
                 .verifyProductAdded();
 
         //Get cookie from browser
@@ -93,9 +96,12 @@ public class PrestaShopTests extends TestBase {
         Document getHTML = Jsoup.parse(response);
 
         //Get cart quantity
-        String cartQuantity = getHTML.getElementById("summary_products_quantity").ownText();
+        String cartQuantity = getHTML.select(".cart_description .product-name a").text();
+        String cartItemTitle = getHTML.select(".cart_block_product_name").text();
 
-        assertThat(cartQuantity.startsWith("1"));
+        assertThat(cartQuantity.equals("1"));
+        assertThat(cartItemTitle.equals(womanPage.getItemTitle()));
+
     }
 
     @Test

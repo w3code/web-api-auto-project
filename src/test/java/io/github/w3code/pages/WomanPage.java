@@ -20,7 +20,6 @@ public class WomanPage {
     private final SelenideElement
             pageTitle = $(".title_block"),
             firstCart = $(".product_img_link"),
-            addToCartButton = $(By.xpath("//a[@title='Add to cart']")),
             okMessage = $("h2"),
             addedToWishList = $(".fancybox-error");
 
@@ -54,8 +53,8 @@ public class WomanPage {
     }
 
     @Step("Click Add To Cart")
-    public WomanPage clickAddToCart() {
-        addToCartButton.click();
+    public WomanPage clickAddToCart(int num) {
+        $(By.xpath("//a[@data-id-product='" + (num + 1) + "']")).click();
         return this;
     }
 
