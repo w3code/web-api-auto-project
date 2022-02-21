@@ -3,10 +3,7 @@ package io.github.w3code.tests;
 import com.codeborne.selenide.Configuration;
 import io.github.w3code.config.ShopConfig;
 import io.github.w3code.helpers.Attach;
-import io.github.w3code.pages.IdentityPage;
-import io.github.w3code.pages.MyAccountPage;
-import io.github.w3code.pages.SignInPage;
-import io.github.w3code.pages.WomanPage;
+import io.github.w3code.pages.*;
 import io.restassured.RestAssured;
 import org.aeonbits.owner.ConfigFactory;
 import org.junit.jupiter.api.AfterEach;
@@ -19,6 +16,7 @@ public class TestBase {
     MyAccountPage myAccountPage = new MyAccountPage();
     IdentityPage identityPage = new IdentityPage();
     WomanPage womanPage = new WomanPage();
+    MyWishList myWishList = new MyWishList();
 
     @BeforeAll
     static void startMaximized() {

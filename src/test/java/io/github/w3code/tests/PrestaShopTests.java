@@ -8,11 +8,9 @@ import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.Cookie;
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 import static io.github.w3code.filters.CustomLogFilter.customLogFilter;
+import static io.github.w3code.helpers.RandomNumber.getRandomNumber;
 import static io.github.w3code.helpers.ShopLogin.loginShopViaApi;
 import static io.restassured.RestAssured.given;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -81,7 +79,7 @@ public class PrestaShopTests extends TestBase {
         Cookie cookie = getWebDriver().manage().getCookieNamed("PrestaShop-a30a9934ef476d11b6cc3c983616e364");
 
         //Check shopping cart for added position by API
-        String response =  given()
+        String response = given()
                 .filter(customLogFilter().withCustomTemplates())
                 .contentType("application/x-www-form-urlencoded")
                 .cookie(String.valueOf(cookie))
@@ -98,5 +96,29 @@ public class PrestaShopTests extends TestBase {
         String cartQuantity = getHTML.getElementById("summary_products_quantity").ownText();
 
         assertThat(cartQuantity.startsWith("1"));
+    }
+
+    @Test
+    @DisplayName("Add to wishlist test")
+    @Tag("AddToWishlistTest")
+    void addToWishlistTest() {
+        loginShopViaApi(shop.user(), shop.password());
+
+        int cartNum = getRandomNumber(0, 6);
+
+        womanPage
+                .openPage()
+                .verifyWomanPage()
+                .moveToCart(cartNum)
+                .setItemTitle(cartNum)
+                .addToWishList(cartNum)
+                .verifyAddedToWishListMessage();
+
+        myWishList
+                .openPage()
+                .verifyMyWishListPage()
+                .clickOnMyWishlist()
+                .verifyMyWishListItemTitle(womanPage.getItemTitle())
+                .deleteMyWishList();
     }
 }

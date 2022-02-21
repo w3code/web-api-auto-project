@@ -1,24 +1,32 @@
 package io.github.w3code.pages;
 
+import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 
+import java.util.List;
+
 import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.*;
 
 public class WomanPage {
 
     //locators and elements
     private final String PAGE_TITLE = "WOMEN",
-            OK_ADDED_MESSAGE = "Product successfully added to your shopping cart";
+            OK_ADDED_MESSAGE = "Product successfully added to your shopping cart",
+            ADDED_TO_WISHLIST_MESSAGE = "Added to your wishlist.";
 
     private final SelenideElement
             pageTitle = $(".title_block"),
             firstCart = $(".product_img_link"),
             addToCartButton = $(By.xpath("//a[@title='Add to cart']")),
-            okMessage = $("h2");
+            okMessage = $("h2"),
+            addedToWishList = $(".fancybox-error");
+
+    private final ElementsCollection cartImages = $$(".product_img_link");
+
+    private String itemTitle;
 
     //actions
     @Step("Open the Woman page")
@@ -39,6 +47,12 @@ public class WomanPage {
         return this;
     }
 
+    @Step("Move to cart ")
+    public WomanPage moveToCart(int num) {
+        cartImages.get(num).hover();
+        return this;
+    }
+
     @Step("Click Add To Cart")
     public WomanPage clickAddToCart() {
         addToCartButton.click();
@@ -51,4 +65,26 @@ public class WomanPage {
         return this;
     }
 
+    @Step("Set product title for future verify")
+    public WomanPage setItemTitle(int num) {
+        itemTitle = cartImages.get(num).getAttribute("title");
+        return this;
+    }
+
+    @Step("Get product title")
+    public String getItemTitle() {
+        return this.itemTitle;
+    }
+
+    @Step("Add to wishlist")
+    public WomanPage addToWishList(int num) {
+        $(".addToWishlist.wishlistProd_" + (num + 1)).click();
+        return this;
+    }
+
+    @Step("Verify added in wishlist message")
+    public WomanPage verifyAddedToWishListMessage() {
+        addedToWishList.shouldHave(text(ADDED_TO_WISHLIST_MESSAGE));
+        return this;
+    }
 }
