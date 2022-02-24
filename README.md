@@ -1,4 +1,4 @@
-![](https://github.com/w3code/web-api-auto-project/raw/main/assets/icons/wikipedia_logo.svg "PrestaShop tests")
+![](https://github.com/w3code/web-api-auto-project/raw/main/assets/screenshots/screenshot.png "PrestaShop tests")
 
 # PrestaShop tests
 
@@ -89,8 +89,20 @@ After the build is finished you can view the Allure Report for this build.
 
 ## Selenoid video
 
+#### UI login test
+![](https://github.com/w3code/web-api-auto-project/raw/main/assets/gif/uilogintest.gif "UI login test")
 
+#### API login test
+![](https://github.com/w3code/web-api-auto-project/raw/main/assets/gif/apilogintest.gif "API login test")
 
+#### Modify profile name test
+![](https://github.com/w3code/web-api-auto-project/raw/main/assets/gif/modifyprofilenametest.gif "Modify profile name test")
+
+#### Add to wishlist test
+![](https://github.com/w3code/web-api-auto-project/raw/main/assets/gif/addtowishlisttest.gif "Add to wishlist test")
+
+#### Add to cart test
+![](https://github.com/w3code/web-api-auto-project/raw/main/assets/gif/addtocarttest.gif "Add to cart test")
 
 ## Telegram notifications
 
